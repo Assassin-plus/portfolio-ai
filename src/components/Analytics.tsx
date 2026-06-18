@@ -71,7 +71,13 @@ export default function Analytics() {
   const projectsDisplay = useCountUp(10, 1200, countFormat, isInView, 800)
 
   return (
-    <section id="about" className="section-padded" style={{ background: '#000' }}>
+    <section
+      id="about"
+      className="section-padded"
+      style={{
+        background: `linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.82) 42%, rgba(0,0,0,0.82) 58%, rgba(0,0,0,0.95) 100%), url(${import.meta.env.BASE_URL}bg-about.jpg) center / cover no-repeat #000`,
+      }}
+    >
       {/* Header */}
       <div ref={ref} style={{ textAlign: 'center', marginBottom: 64 }}>
         <p

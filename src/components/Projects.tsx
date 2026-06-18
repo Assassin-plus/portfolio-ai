@@ -446,7 +446,13 @@ export default function Projects() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="works" className="section-padded" style={{ background: '#000' }}>
+    <section
+      id="works"
+      className="section-padded"
+      style={{
+        background: `linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.82) 42%, rgba(0,0,0,0.82) 58%, rgba(0,0,0,0.95) 100%), url(${import.meta.env.BASE_URL}bg-projects.jpg) center / cover no-repeat #000`,
+      }}
+    >
       {/* Header */}
       <div ref={ref} style={{ textAlign: 'center', marginBottom: 64 }}>
         <p

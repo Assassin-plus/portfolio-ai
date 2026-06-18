@@ -306,6 +306,11 @@ export default function Works() {
               const zIndex = 20 - absOff * 5
               const blur = absOff === 0 ? 0 : absOff === 1 ? 2 : 5
 
+              // MicroPT is shown portrait — swap the landscape width/height for this card.
+              const isPortrait = WORKS_IMAGES[i].includes('micropt')
+              const cardW = isPortrait ? CARD_H : CARD_W
+              const cardH = isPortrait ? CARD_W : CARD_H
+
               return (
                 <motion.div
                   key={i}
@@ -316,10 +321,10 @@ export default function Works() {
                     position: 'absolute',
                     top: '50%',
                     left: '50%',
-                    marginTop: -(CARD_H / 2),
-                    marginLeft: -(CARD_W / 2),
-                    width: CARD_W,
-                    height: CARD_H,
+                    marginTop: -(cardH / 2),
+                    marginLeft: -(cardW / 2),
+                    width: cardW,
+                    height: cardH,
                     borderRadius: 18,
                     overflow: 'hidden',
                     zIndex,

@@ -22,7 +22,7 @@ export default function Footer() {
     : '© 2025 Ziqi Lu · University of Utah EAE'
 
   return (
-    <footer id="contact" style={{ background: '#0a0a0a', borderTop: '1px solid rgba(255,255,255,0.08)', padding: 'clamp(48px,6vw,80px) clamp(16px,4vw,48px) clamp(32px,4vw,48px)' }}>
+    <footer id="contact" style={{ background: `linear-gradient(180deg, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.86) 45%, rgba(0,0,0,0.92) 100%), url(${import.meta.env.BASE_URL}bg-footer.jpg) center / cover no-repeat #0a0a0a`, borderTop: '1px solid rgba(255,255,255,0.08)', padding: 'clamp(48px,6vw,80px) clamp(16px,4vw,48px) clamp(32px,4vw,48px)' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
 
         {/* Top row */}

@@ -72,7 +72,13 @@ export default function Experience() {
   const reversedTimeline = [...exp.timeline].reverse()
 
   return (
-    <section id="research" className="section-padded" style={{ background: '#050505' }}>
+    <section
+      id="research"
+      className="section-padded"
+      style={{
+        background: `linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.82) 42%, rgba(0,0,0,0.82) 58%, rgba(0,0,0,0.95) 100%), url(${import.meta.env.BASE_URL}bg-research.jpg) center / cover no-repeat #050505`,
+      }}
+    >
       {/* Header */}
       <div ref={sectionRef} style={{ textAlign: 'center', marginBottom: 72 }}>
         <p style={{ fontFamily: 'Satoshi, MiSans, sans-serif', fontSize: 12, fontWeight: 500, letterSpacing: 2, color: 'rgba(255,255,255,0.50)', margin: '0 0 16px' }}>
