@@ -3,7 +3,11 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { Heart, MessageCircle } from 'lucide-react'
 import { useLang } from '../context/LanguageContext'
 
-const IMAGE_URL = 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80&auto=format&fit=crop'
+// One image per slide, indexed to match text.hero.story.slides.
+const SLIDE_IMAGES = [
+  `${import.meta.env.BASE_URL}story-worlds.jpg`,      // "game worlds" — ProjectTitan still
+  `${import.meta.env.BASE_URL}story-procedural.jpg`,  // "procedural generation" — AutoHydrology still
+]
 const SLIDE_DURATION = 6000 // ms per slide
 
 export default function StoryCard() {
@@ -75,12 +79,24 @@ export default function StoryCard() {
             '0 40px 100px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 0 0 1px rgba(255,255,255,0.06)',
         }}
       >
-        {/* Background image */}
-        <img
-          src={IMAGE_URL}
-          alt=""
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
-        />
+        {/* Background image — one per slide, crossfaded */}
+        {SLIDE_IMAGES.map((url, i) => (
+          <img
+            key={i}
+            src={url}
+            alt=""
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center 20%',
+              opacity: i === slide ? 1 : 0,
+              transition: 'opacity 0.7s ease',
+            }}
+          />
+        ))}
 
         {/* Tint overlay */}
         <div
