@@ -16,6 +16,8 @@ export interface Translations {
     story: {
       slides: Array<{ line1: string; line2: string; line3: string }>
       pill: string
+      commentPrompt: string
+      commentCta: string
     }
     marqueeHeading: string
     bioEyebrow: string
@@ -131,6 +133,8 @@ const en: Translations = {
         { line1: 'Researching', line2: 'procedural', line3: 'generation' },
       ],
       pill: 'Technical Artist',
+      commentPrompt: 'Like what you see?',
+      commentCta: 'Get in touch',
     },
     marqueeHeading: 'Studied & Researched at',
     bioEyebrow: 'ABOUT ME',
@@ -332,6 +336,8 @@ const zh: Translations = {
         { line1: '研究', line2: '程序化', line3: '生成技术' },
       ],
       pill: '技术美术',
+      commentPrompt: '喜欢这些作品吗？',
+      commentCta: '联系我',
     },
     marqueeHeading: '就读与研究于',
     bioEyebrow: '关于我',
