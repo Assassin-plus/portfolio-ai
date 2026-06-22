@@ -138,7 +138,7 @@ export default function Works() {
 
   const item = works.items[active]
   const accentColor = CATEGORY_COLORS[item.category] ?? '#fff'
-  const MONO = "'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, monospace"
+  const MONO = "'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, 'MiSans', 'PingFang SC', 'Microsoft YaHei', monospace"
 
   // vh of scroll required per card transition — lower = less scrolling to flip through cards
   const SCROLL_PER_CARD_VH = 40

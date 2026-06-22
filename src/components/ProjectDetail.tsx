@@ -52,7 +52,7 @@ export default function ProjectDetail() {
   const d = item.detail
   const labels = text.works.detail
   const accent = CATEGORY_COLORS[item.category] ?? '#fff'
-  const MONO = "'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, monospace"
+  const MONO = "'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, 'MiSans', 'PingFang SC', 'Microsoft YaHei', monospace"
   const allLinks = d.links
 
   return (
