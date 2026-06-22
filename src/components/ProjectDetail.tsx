@@ -69,9 +69,10 @@ export default function ProjectDetail() {
         }}
       >
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          {/* Back link */}
+          {/* Back link — restores the matching card in the Works carousel */}
           <Link
             to="/"
+            onClick={() => sessionStorage.setItem('returnToWork', String(i))}
             style={{
               display: 'inline-flex',
               alignItems: 'center',

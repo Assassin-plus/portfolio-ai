@@ -311,9 +311,7 @@ const en: Translations = {
             { label: 'Category', value: 'Video Games' },
             { label: 'Tools', value: 'Substance Designer, Niagara' },
           ],
-          links: [
-            { label: 'Hugo portfolio', url: 'https://assassin-plus.github.io/portfolio/project/offbalance/' },
-          ],
+          links: [],
         },
       },
       {
@@ -337,7 +335,6 @@ const en: Translations = {
           ],
           links: [
             { label: 'Watch on YouTube', url: 'https://youtu.be/3nMkRwYM3fc' },
-            { label: 'Hugo portfolio', url: 'https://assassin-plus.github.io/portfolio/project/projecttitan/' },
           ],
         },
       },
@@ -638,9 +635,7 @@ const zh: Translations = {
             { label: '类别', value: '电子游戏' },
             { label: '工具', value: 'Substance Designer、Niagara' },
           ],
-          links: [
-            { label: 'Hugo 作品集', url: 'https://assassin-plus.github.io/portfolio/project/offbalance/' },
-          ],
+          links: [],
         },
       },
       {
@@ -664,7 +659,6 @@ const zh: Translations = {
           ],
           links: [
             { label: '在 YouTube 观看', url: 'https://youtu.be/3nMkRwYM3fc' },
-            { label: 'Hugo 作品集', url: 'https://assassin-plus.github.io/portfolio/project/projecttitan/' },
           ],
         },
       },

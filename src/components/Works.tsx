@@ -109,6 +109,33 @@ export default function Works() {
     window.scrollTo({ top: wrapperTopAbs + p * pinDistance, behavior: 'smooth' })
   }, [isMobile, total])
 
+  // On returning from a project detail page, jump straight to that card.
+  useEffect(() => {
+    const raw = sessionStorage.getItem('returnToWork')
+    if (raw === null) return
+    sessionStorage.removeItem('returnToWork')
+    const i = parseInt(raw, 10)
+    if (Number.isNaN(i) || i < 0) return
+    if (isMobile) { setActive(i); return }
+    let tries = 0
+    const run = () => {
+      const el = wrapperRef.current
+      const pinDistance = el ? el.offsetHeight - window.innerHeight : 0
+      if (!el || pinDistance <= 0) {
+        if (tries++ < 40) { requestAnimationFrame(run); return }
+        setActive(i)
+        return
+      }
+      const wrapperTopAbs = el.getBoundingClientRect().top + window.scrollY
+      const p = total > 1 ? i / (total - 1) : 0
+      window.scrollTo({ top: wrapperTopAbs + p * pinDistance, behavior: 'auto' })
+      setActive(i)
+    }
+    requestAnimationFrame(run)
+    // run once on mount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const item = works.items[active]
   const accentColor = CATEGORY_COLORS[item.category] ?? '#fff'
   const MONO = "'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, monospace"
