@@ -16,11 +16,60 @@ const BASE = 'https://assassin-plus.github.io/portfolio'
 const WORKS_IMAGES = [
   `${BASE}/project/offbalance/featured.gif`,
   `${BASE}/project/projecttitan/featured.gif`,
+  `${import.meta.env.BASE_URL}carpaint.gif`,
   `${BASE}/project/offbeatreprise/featured.gif`,
   `${BASE}/project/livingstrokes/featured.gif`,
   `${import.meta.env.BASE_URL}flamegs.jpg`,
   `${import.meta.env.BASE_URL}micropt.gif`,
 ]
+
+// Optional higher-fidelity video per work, lazy-loaded and faded in over the
+// gif/image only while a card is active. `undefined` = image-only.
+const WORKS_VIDEOS: (string | undefined)[] = [
+  undefined,
+  undefined,
+  `${import.meta.env.BASE_URL}carpaint.mp4`,
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+]
+
+// Shows the lightweight image immediately; when its card is active and a video
+// is provided, loads the video and crossfades it in once it can render.
+function WorkMedia({ img, video, active, title }: { img: string; video?: string; active: boolean; title: string }) {
+  const [videoReady, setVideoReady] = useState(false)
+  useEffect(() => { if (!active) setVideoReady(false) }, [active])
+  return (
+    <>
+      <img
+        src={img}
+        alt={title}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+      />
+      {video && active && (
+        <video
+          src={video}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onLoadedData={() => setVideoReady(true)}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: videoReady ? 1 : 0,
+            transition: 'opacity 0.6s ease',
+          }}
+        />
+      )}
+    </>
+  )
+}
 
 const CATEGORY_COLORS: Record<string, string> = {
   'GAME DEV': '#1DC47D',
@@ -334,10 +383,11 @@ export default function Works() {
                       : '0 8px 24px rgba(0,0,0,0.4)',
                   }}
                 >
-                  <img
-                    src={WORKS_IMAGES[i]}
-                    alt={works.items[i].title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  <WorkMedia
+                    img={WORKS_IMAGES[i]}
+                    video={WORKS_VIDEOS[i]}
+                    active={i === active}
+                    title={works.items[i].title}
                   />
                 </motion.div>
               )
