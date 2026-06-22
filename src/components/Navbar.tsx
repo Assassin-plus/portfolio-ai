@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLang } from '../context/LanguageContext'
+import { useSectionNav } from '../lib/useSectionNav'
 
 const NAV_IDS = ['research', 'projects', 'works', 'about']
 const RESUME_EN = 'https://assassin-plus.github.io/portfolio/uploads/resume.pdf'
@@ -8,6 +9,7 @@ const RESUME_ZH = 'https://assassin-plus.github.io/portfolio/zh/uploads/resume-z
 export default function Navbar() {
   const { text, lang, toggleLang } = useLang()
   const [hovered, setHovered] = useState<number | null>(null)
+  const goToSection = useSectionNav()
 
   return (
     <nav
@@ -23,7 +25,9 @@ export default function Navbar() {
       <div style={{ position: 'relative', display: 'flex', alignItems: 'center', height: 48 }}>
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div
+          <button
+            onClick={() => goToSection('top')}
+            aria-label="Home"
             style={{
               width: 32,
               height: 32,
@@ -32,12 +36,15 @@ export default function Navbar() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
+              border: 'none',
+              padding: 0,
+              cursor: 'pointer',
             }}
           >
             <span style={{ fontFamily: 'Satoshi, MiSans, sans-serif', fontSize: 13, fontWeight: 700, color: '#000', letterSpacing: -0.5 }}>
               ZL
             </span>
-          </div>
+          </button>
         </div>
 
         {/* Center pill nav */}
@@ -57,9 +64,9 @@ export default function Navbar() {
           }}
         >
           {text.nav.items.map((item, i) => (
-            <a
+            <button
               key={item}
-              href={`#${NAV_IDS[i]}`}
+              onClick={() => goToSection(NAV_IDS[i])}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
               style={{
@@ -69,13 +76,14 @@ export default function Navbar() {
                 color: 'rgba(255,255,255,0.80)',
                 padding: '8px 16px',
                 borderRadius: 9999,
-                textDecoration: 'none',
+                border: 'none',
+                cursor: 'pointer',
                 background: hovered === i ? 'rgba(255,255,255,0.10)' : 'transparent',
                 transition: 'background 0.15s',
               }}
             >
               {item}
-            </a>
+            </button>
           ))}
         </div>
 

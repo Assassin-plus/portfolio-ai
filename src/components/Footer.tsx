@@ -1,5 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
 import { useLang } from '../context/LanguageContext'
+import { useSectionNav } from '../lib/useSectionNav'
 
 const LINKS = [
   { label: 'GitHub', href: 'https://github.com/assassin-plus' },
@@ -15,6 +16,7 @@ const NAV_IDS = ['research', 'projects', 'works', 'about']
 export default function Footer() {
   const { lang } = useLang()
   const navItems = lang === 'zh' ? NAV_ZH : NAV_EN
+  const goToSection = useSectionNav()
 
   const emailText = lang === 'zh' ? '邮件联系' : 'Get in touch'
   const copy = lang === 'zh'
@@ -60,15 +62,15 @@ export default function Footer() {
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {navItems.map((item, i) => (
-                  <a
+                  <button
                     key={item}
-                    href={`#${NAV_IDS[i]}`}
-                    style={{ fontFamily: 'Satoshi, MiSans, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.65)', textDecoration: 'none', transition: 'color 0.2s' }}
+                    onClick={() => goToSection(NAV_IDS[i])}
+                    style={{ fontFamily: 'Satoshi, MiSans, sans-serif', fontSize: 15, color: 'rgba(255,255,255,0.65)', textDecoration: 'none', background: 'none', border: 'none', padding: 0, cursor: 'pointer', textAlign: 'left', transition: 'color 0.2s' }}
                     onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
                     onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.65)')}
                   >
                     {item}
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>

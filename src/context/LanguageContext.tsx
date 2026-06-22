@@ -112,7 +112,20 @@ export interface Translations {
       year: string
       desc: string
       link: string
+      detail: {
+        tagline: string
+        paragraphs: string[]
+        meta: { label: string; value: string }[]
+        links: { label: string; url: string }[]
+      }
     }>
+    detail: {
+      eyebrow: string
+      back: string
+      about: string
+      details: string
+      links: string
+    }
   }
 }
 
@@ -272,6 +285,13 @@ const en: Translations = {
     title2: 'creative work',
     sub: 'Games, graphics research, technical art, and digital media',
     btn: 'View project',
+    detail: {
+      eyebrow: 'PROJECT',
+      back: 'Back to projects',
+      about: 'About',
+      details: 'Details',
+      links: 'Links',
+    },
     items: [
       {
         title: 'Off Balance',
@@ -279,6 +299,22 @@ const en: Translations = {
         year: '2025',
         desc: 'Physics-based roly-poly ball mechanic with procedural Substance Designer materials and stylized Niagara VFX.',
         link: '',
+        detail: {
+          tagline: 'Stylized environment art and real-time VFX for a physics-driven game world.',
+          paragraphs: [
+            'Off Balance focused on building stylized visual assets for a game environment. The core of the work was a set of procedural stylized textures authored in Substance Designer — metal grates, concrete, wood, and coated metal rust — with close attention to memory optimization through texture compression.',
+            'Beyond surfacing, the project extended into real-time VFX built in Niagara, including stylized smoke and fire effects, alongside ocean materials crafted to elevate the environmental presentation of the scene.',
+          ],
+          meta: [
+            { label: 'Role', value: 'Environment / Technical Artist' },
+            { label: 'Year', value: '2025' },
+            { label: 'Category', value: 'Video Games' },
+            { label: 'Tools', value: 'Substance Designer, Niagara' },
+          ],
+          links: [
+            { label: 'Hugo portfolio', url: 'https://assassin-plus.github.io/portfolio/project/offbalance/' },
+          ],
+        },
       },
       {
         title: 'Project Titan',
@@ -286,6 +322,24 @@ const en: Translations = {
         year: '2025',
         desc: 'Houdini procedural pipeline — signage, building gen, VAT characters, cloth sim — integrated with UE5.',
         link: 'https://youtu.be/3nMkRwYM3fc',
+        detail: {
+          tagline: 'A technical study of Houdini procedural workflows, integrated into Unreal Engine 5.',
+          paragraphs: [
+            'Project Titan is a tutorial-based technical study and validation of Houdini’s procedural workflows, focused on recreating a 3D environment inside Unreal Engine 5.',
+            'The work spans a wide range of procedural asset creation: signage, building generation, rail systems, train destruction effects, VAT characters, trees with wind effects, fences, platforms, shrubs, ivy, trains, cloth simulation, stacking mechanics, and cables.',
+            'Replicating functionality from tutorials, the project built hands-on experience across procedural generation, material creation, VFX development, simulation optimization, and engine integration for complex game-environment production.',
+          ],
+          meta: [
+            { label: 'Role', value: 'Technical Artist' },
+            { label: 'Year', value: '2025' },
+            { label: 'Category', value: 'Video Games' },
+            { label: 'Tools', value: 'Houdini, Unreal Engine 5' },
+          ],
+          links: [
+            { label: 'Watch on YouTube', url: 'https://youtu.be/3nMkRwYM3fc' },
+            { label: 'Hugo portfolio', url: 'https://assassin-plus.github.io/portfolio/project/projecttitan/' },
+          ],
+        },
       },
       {
         title: 'Substrate Carpaint',
@@ -293,6 +347,20 @@ const en: Translations = {
         year: '2025',
         desc: 'Layered car-paint material study — metallic flake, clearcoat, and Fresnel falloff authored procedurally and rendered in real time.',
         link: '',
+        detail: {
+          tagline: 'A layered, physically motivated car-paint material rendered in real time.',
+          paragraphs: [
+            'Substrate Carpaint is a material study reproducing the look of automotive paint as a layered surface: a metallic-flake base coat, a glossy clearcoat layer on top, and Fresnel-driven falloff that shifts the highlight and tint across viewing angles.',
+            'The shader is authored procedurally so its flake density, coat roughness, and color can be tuned freely, and it is built to render in real time — captured here as the rotating turntable on this page.',
+          ],
+          meta: [
+            { label: 'Role', value: 'Technical Artist' },
+            { label: 'Year', value: '2025' },
+            { label: 'Category', value: 'Technical Art' },
+            { label: 'Focus', value: 'Layered materials, real-time shading' },
+          ],
+          links: [],
+        },
       },
       {
         title: 'Offbeat Reprise',
@@ -300,6 +368,22 @@ const en: Translations = {
         year: '2025',
         desc: 'Unity side-scroller bullet-time shooter with full combat systems, particle VFX, and kinetic controls.',
         link: 'https://assassin-plus.itch.io/offbeat-reprise',
+        detail: {
+          tagline: 'A low-poly side-scrolling rhythm shooter, built for the miHoYo Game Design Contest.',
+          paragraphs: [
+            'Offbeat Reprise is a Unity side-scroller that fuses bullet-time shooting with rhythm, wrapping full combat systems, particle VFX, and kinetic controls into a fast, music-led experience.',
+            'The game was created for the miHoYo Game Design Contest and is released free to play in the browser. Its background music was generated with SunoAI (the project is AI-assisted, with AI audio).',
+          ],
+          meta: [
+            { label: 'Role', value: 'Developer' },
+            { label: 'Year', value: '2025' },
+            { label: 'Engine', value: 'Unity (HTML5)' },
+            { label: 'Genres', value: 'Shooter, Rhythm' },
+          ],
+          links: [
+            { label: 'Play on itch.io', url: 'https://assassin-plus.itch.io/offbeat-reprise' },
+          ],
+        },
       },
       {
         title: 'Living Strokes',
@@ -307,6 +391,22 @@ const en: Translations = {
         year: '2025',
         desc: 'VR puzzle game teaching Chinese characters through immersive 3D spatial stroke tracing.',
         link: 'https://xinyanwang.itch.io/living-strokes',
+        detail: {
+          tagline: 'Learning Chinese characters as interactive street art, in VR.',
+          paragraphs: [
+            'Living Strokes presents Chinese characters as interactive street art. Players spray characters onto a canvas — writing 火 ignites candles, 门 opens doors, and 木 causes logs to fall.',
+            'Each character serves a dual purpose: environmental modification and puzzle resolution. The approach turns language learning from rote memorization into experiential, interactive problem-solving with lasting retention.',
+          ],
+          meta: [
+            { label: 'Team', value: 'XinyanWang, Assassin-plus, eldoggo4200, Licor_Chang, Suii Li' },
+            { label: 'Year', value: '2025' },
+            { label: 'Platform', value: 'Windows (VR)' },
+            { label: 'Genre', value: 'Puzzle' },
+          ],
+          links: [
+            { label: 'Get it on itch.io', url: 'https://xinyanwang.itch.io/living-strokes' },
+          ],
+        },
       },
       {
         title: 'FlameGS',
@@ -314,6 +414,20 @@ const en: Translations = {
         year: '2024',
         desc: 'Gaussian Splatting + FLAME parametric face model for photo-realistic facial reconstruction from monocular video.',
         link: '',
+        detail: {
+          tagline: 'Photo-realistic facial reconstruction from a single monocular video.',
+          paragraphs: [
+            'FlameGS combines 3D Gaussian Splatting with the FLAME parametric face model to reconstruct photo-realistic, animatable faces from ordinary monocular video.',
+            'The FLAME model provides a controllable geometric prior for head shape and expression, while the Gaussian Splatting representation captures fine appearance detail and renders efficiently — bridging parametric control with high-fidelity, real-time-friendly rendering.',
+          ],
+          meta: [
+            { label: 'Role', value: 'Graphics Researcher' },
+            { label: 'Year', value: '2024' },
+            { label: 'Category', value: 'Graphics Research' },
+            { label: 'Topics', value: 'Gaussian Splatting, FLAME, face reconstruction' },
+          ],
+          links: [],
+        },
       },
       {
         title: 'MicroPT',
@@ -321,6 +435,22 @@ const en: Translations = {
         year: '2022',
         desc: 'C++ path tracer with Stochastic Progressive Photon Mapping, BVH acceleration, and modern microfacet materials.',
         link: 'https://github.com/Assassin-plus/micropt',
+        detail: {
+          tagline: 'A from-scratch C++ physically based renderer.',
+          paragraphs: [
+            'MicroPT is a C++ path tracer written from the ground up. It implements Stochastic Progressive Photon Mapping for robust handling of caustics and difficult light transport, BVH acceleration for fast ray–scene intersection, and a modern microfacet material model for physically plausible surfaces.',
+            'The project is an exercise in the core of physically based rendering — sampling, acceleration structures, and energy-conserving BSDFs.',
+          ],
+          meta: [
+            { label: 'Role', value: 'Author' },
+            { label: 'Year', value: '2022' },
+            { label: 'Category', value: 'Graphics' },
+            { label: 'Tech', value: 'C++, SPPM, BVH, microfacet BSDFs' },
+          ],
+          links: [
+            { label: 'Source on GitHub', url: 'https://github.com/Assassin-plus/micropt' },
+          ],
+        },
       },
     ],
   },
@@ -482,6 +612,13 @@ const zh: Translations = {
     title2: '创作合集',
     sub: '游戏、图形学研究、技术美术与数字媒体',
     btn: '查看详情',
+    detail: {
+      eyebrow: '项目',
+      back: '返回项目',
+      about: '关于',
+      details: '信息',
+      links: '链接',
+    },
     items: [
       {
         title: 'Off Balance',
@@ -489,6 +626,22 @@ const zh: Translations = {
         year: '2025',
         desc: '以人体尺度不倒翁球为操控核心的物理游戏，配以程序化 Substance Designer 材质与 Niagara 风格化特效。',
         link: '',
+        detail: {
+          tagline: '为物理驱动的游戏世界打造风格化环境美术与实时特效。',
+          paragraphs: [
+            'Off Balance 聚焦于为游戏环境制作风格化的视觉资产。核心工作是一组在 Substance Designer 中制作的程序化风格化材质——金属格栅、混凝土、木材以及带涂层的金属锈蚀——并通过纹理压缩对内存占用进行了细致优化。',
+            '在表面材质之外，项目还延伸到在 Niagara 中制作的实时特效，包括风格化的烟雾与火焰，以及为提升场景环境表现而制作的海洋材质。',
+          ],
+          meta: [
+            { label: '角色', value: '环境 / 技术美术' },
+            { label: '年份', value: '2025' },
+            { label: '类别', value: '电子游戏' },
+            { label: '工具', value: 'Substance Designer、Niagara' },
+          ],
+          links: [
+            { label: 'Hugo 作品集', url: 'https://assassin-plus.github.io/portfolio/project/offbalance/' },
+          ],
+        },
       },
       {
         title: 'Project Titan',
@@ -496,6 +649,24 @@ const zh: Translations = {
         year: '2025',
         desc: 'Houdini 程序化流水线——标牌生成、建筑生成、VAT 角色、布料模拟——完整集成至 UE5。',
         link: 'https://youtu.be/3nMkRwYM3fc',
+        detail: {
+          tagline: '对 Houdini 程序化流程的技术研究，并集成进 Unreal Engine 5。',
+          paragraphs: [
+            'Project Titan 是一项基于教程的技术研究与验证，围绕 Houdini 的程序化工作流展开，目标是在 Unreal Engine 5 中重建一个 3D 环境。',
+            '工作覆盖了大量程序化资产的制作：标牌、建筑生成、轨道系统、列车破坏效果、VAT 角色、带风力效果的树木、栅栏、平台、灌木、藤蔓、列车、布料模拟、堆叠机制以及线缆。',
+            '在复刻教程功能的过程中，项目积累了程序化生成、材质制作、特效开发、模拟优化以及引擎集成等方面的实战经验，面向复杂游戏环境的生产流程。',
+          ],
+          meta: [
+            { label: '角色', value: '技术美术' },
+            { label: '年份', value: '2025' },
+            { label: '类别', value: '电子游戏' },
+            { label: '工具', value: 'Houdini、Unreal Engine 5' },
+          ],
+          links: [
+            { label: '在 YouTube 观看', url: 'https://youtu.be/3nMkRwYM3fc' },
+            { label: 'Hugo 作品集', url: 'https://assassin-plus.github.io/portfolio/project/projecttitan/' },
+          ],
+        },
       },
       {
         title: 'Substrate Carpaint',
@@ -503,6 +674,20 @@ const zh: Translations = {
         year: '2025',
         desc: '分层汽车漆材质研究——金属闪片、清漆层与菲涅尔衰减全程序化制作，实时渲染呈现。',
         link: '',
+        detail: {
+          tagline: '一套基于物理直觉、实时渲染的分层汽车漆材质。',
+          paragraphs: [
+            'Substrate Carpaint 是一项材质研究，将汽车漆还原为分层的表面：带金属闪片的底色层、其上的高光清漆层，以及由菲涅尔驱动、随视角变化的高光与色调衰减。',
+            '着色器以程序化方式制作，闪片密度、清漆粗糙度与颜色都可自由调节，并面向实时渲染——本页中以旋转转盘的形式呈现。',
+          ],
+          meta: [
+            { label: '角色', value: '技术美术' },
+            { label: '年份', value: '2025' },
+            { label: '类别', value: '技术美术' },
+            { label: '重点', value: '分层材质、实时着色' },
+          ],
+          links: [],
+        },
       },
       {
         title: 'Offbeat Reprise',
@@ -510,6 +695,22 @@ const zh: Translations = {
         year: '2025',
         desc: 'Unity 横版子弹时间射击游戏，完整战斗系统、粒子特效、流畅操控，提供紧张刺激的射击体验。',
         link: 'https://assassin-plus.itch.io/offbeat-reprise',
+        detail: {
+          tagline: '为米哈游游戏设计大赛打造的低多边形横版节奏射击游戏。',
+          paragraphs: [
+            'Offbeat Reprise 是一款将子弹时间射击与节奏玩法融合的 Unity 横版游戏，把完整的战斗系统、粒子特效与流畅操控整合进一场快节奏、以音乐为主导的体验。',
+            '本作为米哈游游戏设计大赛而作，已发布并可在浏览器中免费游玩。背景音乐由 SunoAI 生成（项目为 AI 辅助，含 AI 音频）。',
+          ],
+          meta: [
+            { label: '角色', value: '开发者' },
+            { label: '年份', value: '2025' },
+            { label: '引擎', value: 'Unity（HTML5）' },
+            { label: '类型', value: '射击、节奏' },
+          ],
+          links: [
+            { label: '在 itch.io 游玩', url: 'https://assassin-plus.itch.io/offbeat-reprise' },
+          ],
+        },
       },
       {
         title: 'Living Strokes',
@@ -517,6 +718,22 @@ const zh: Translations = {
         year: '2025',
         desc: '通过沉浸式三维空间笔画描绘教授中文汉字的 VR 益智游戏。',
         link: 'https://xinyanwang.itch.io/living-strokes',
+        detail: {
+          tagline: '在 VR 中，把学习汉字变成可交互的街头艺术。',
+          paragraphs: [
+            'Living Strokes 将中文汉字呈现为可交互的街头艺术。玩家把汉字喷涂到画布上——写「火」点燃蜡烛，写「门」打开门扉，写「木」让原木落下。',
+            '每个汉字都承担双重作用：改变环境与解开谜题。这种方式把语言学习从死记硬背转变为可体验、可交互的解谜过程，记忆更加持久。',
+          ],
+          meta: [
+            { label: '团队', value: 'XinyanWang、Assassin-plus、eldoggo4200、Licor_Chang、Suii Li' },
+            { label: '年份', value: '2025' },
+            { label: '平台', value: 'Windows（VR）' },
+            { label: '类型', value: '益智' },
+          ],
+          links: [
+            { label: '在 itch.io 获取', url: 'https://xinyanwang.itch.io/living-strokes' },
+          ],
+        },
       },
       {
         title: 'FlameGS',
@@ -524,6 +741,20 @@ const zh: Translations = {
         year: '2024',
         desc: '高斯散点 + FLAME 参数化人脸模型，实现从单目视频进行照片级真实人脸重建。',
         link: '',
+        detail: {
+          tagline: '从单段单目视频实现照片级真实的人脸重建。',
+          paragraphs: [
+            'FlameGS 将 3D 高斯散点与 FLAME 参数化人脸模型相结合，从普通的单目视频中重建出照片级真实、可驱动的人脸。',
+            'FLAME 模型为头部形状与表情提供了可控的几何先验，而高斯散点表示则捕捉精细的外观细节并能高效渲染——在参数化控制与高保真、利于实时的渲染之间架起桥梁。',
+          ],
+          meta: [
+            { label: '角色', value: '图形学研究' },
+            { label: '年份', value: '2024' },
+            { label: '类别', value: '图形学研究' },
+            { label: '方向', value: '高斯散点、FLAME、人脸重建' },
+          ],
+          links: [],
+        },
       },
       {
         title: 'Micro-PT',
@@ -531,6 +762,22 @@ const zh: Translations = {
         year: '2022',
         desc: 'C++ 路径追踪器，支持随机渐进光子映射、BVH 加速和现代微表面材质。',
         link: 'https://github.com/Assassin-plus/micropt',
+        detail: {
+          tagline: '从零实现的 C++ 基于物理的渲染器。',
+          paragraphs: [
+            'MicroPT 是一个从零编写的 C++ 路径追踪器。它实现了随机渐进光子映射（SPPM）以稳健处理焦散与困难光路，使用 BVH 加速实现快速的光线—场景求交，并采用现代微表面材质模型以获得符合物理的表面表现。',
+            '该项目是对基于物理渲染核心的练习——采样、加速结构与能量守恒的 BSDF。',
+          ],
+          meta: [
+            { label: '角色', value: '作者' },
+            { label: '年份', value: '2022' },
+            { label: '类别', value: '图形学' },
+            { label: '技术', value: 'C++、SPPM、BVH、微表面 BSDF' },
+          ],
+          links: [
+            { label: '在 GitHub 查看源码', url: 'https://github.com/Assassin-plus/micropt' },
+          ],
+        },
       },
     ],
   },

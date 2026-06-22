@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { useLang } from '../context/LanguageContext'
+import { WORKS_IMAGES, WORKS_VIDEOS, WORKS_SLUGS, CATEGORY_COLORS } from '../data/works'
 
 function useViewportWidth() {
   const [vw, setVw] = useState(() => (typeof window !== 'undefined' ? window.innerWidth : 1280))
@@ -11,29 +13,6 @@ function useViewportWidth() {
   }, [])
   return vw
 }
-
-const BASE = 'https://assassin-plus.github.io/portfolio'
-const WORKS_IMAGES = [
-  `${BASE}/project/offbalance/featured.gif`,
-  `${BASE}/project/projecttitan/featured.gif`,
-  `${import.meta.env.BASE_URL}carpaint.gif`,
-  `${BASE}/project/offbeatreprise/featured.gif`,
-  `${BASE}/project/livingstrokes/featured.gif`,
-  `${import.meta.env.BASE_URL}flamegs.jpg`,
-  `${import.meta.env.BASE_URL}micropt.gif`,
-]
-
-// Optional higher-fidelity video per work, lazy-loaded and faded in over the
-// gif/image only while a card is active. `undefined` = image-only.
-const WORKS_VIDEOS: (string | undefined)[] = [
-  undefined,
-  undefined,
-  `${import.meta.env.BASE_URL}carpaint.mp4`,
-  undefined,
-  undefined,
-  undefined,
-  undefined,
-]
 
 // Shows the lightweight image immediately; when its card is active and a video
 // is provided, loads the video and crossfades it in once it can render.
@@ -69,19 +48,6 @@ function WorkMedia({ img, video, active, title }: { img: string; video?: string;
       )}
     </>
   )
-}
-
-const CATEGORY_COLORS: Record<string, string> = {
-  'GAME DEV': '#1DC47D',
-  'TECHNICAL ART': '#8DB800',
-  'GAME DEV · VR': '#1DC47D',
-  'GRAPHICS RESEARCH': '#7090FF',
-  'GRAPHICS': '#7090FF',
-  '游戏开发': '#1DC47D',
-  '技术美术': '#8DB800',
-  '游戏开发 · VR': '#1DC47D',
-  '图形学研究': '#7090FF',
-  '图形学': '#7090FF',
 }
 
 export default function Works() {
@@ -418,40 +384,24 @@ export default function Works() {
               / {item.year}
             </motion.span>
             <div style={{ display: 'flex', alignItems: 'center', gap: 18, flexShrink: 0 }}>
-              {item.link ? (
-                <a
-                  href={item.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  style={{
-                    fontFamily: MONO,
-                    fontSize: 22,
-                    fontWeight: 500,
-                    letterSpacing: 1.8,
-                    color: 'rgba(255,255,255,0.7)',
-                    textDecoration: 'none',
-                    textTransform: 'uppercase',
-                    whiteSpace: 'nowrap',
-                    transition: 'color 0.2s',
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)')}
-                >
-                  ↳ {works.btn.toUpperCase()}
-                </a>
-              ) : (
-                <span style={{
+              <Link
+                to={`/project/${WORKS_SLUGS[active]}`}
+                style={{
                   fontFamily: MONO,
                   fontSize: 22,
                   fontWeight: 500,
                   letterSpacing: 1.8,
-                  color: 'rgba(255,255,255,0.2)',
+                  color: 'rgba(255,255,255,0.7)',
+                  textDecoration: 'none',
                   textTransform: 'uppercase',
                   whiteSpace: 'nowrap',
-                }}>
-                  ↳ {works.btn.toUpperCase()}
-                </span>
-              )}
+                  transition: 'color 0.2s',
+                }}
+                onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)')}
+              >
+                ↳ {works.btn.toUpperCase()}
+              </Link>
               <div style={{ width: 5, height: 5, borderRadius: '50%', background: 'rgba(255,255,255,0.3)' }} />
             </div>
           </div>
