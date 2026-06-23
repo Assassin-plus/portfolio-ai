@@ -106,24 +106,28 @@ export interface Translations {
     title2: string
     sub: string
     btn: string
+    // ── 每个项目的文案 ────────────────────────────────────────────────
+    // 改详情页文字就改这里的 `detail`。注意：下面的 en / zh 两份都要同步
+    // 改，且数组长度/顺序保持一致，否则 TypeScript 会报错。
     items: Array<{
-      title: string
-      category: string
+      title: string        // 详情页大标题 + Works 卡片名
+      category: string     // 顶部 eyebrow 里的分类
       year: string
-      desc: string
-      link: string
+      desc: string         // Works 卡片上的描述（不显示在详情页）
+      link: string         // 主要外链（保留字段，详情页按钮取自下方 detail.links）
       detail: {
-        tagline: string
-        paragraphs: string[]
-        meta: { label: string; value: string }[]
-        links: { label: string; url: string }[]
+        tagline: string                              // 标题下方的一句副标题
+        paragraphs: string[]                         // “关于 / About” 正文，每个元素是一段
+        meta: { label: string; value: string }[]     // 右侧“信息 / Details”栏，每行一个 标签:值
+        links: { label: string; url: string }[]      // 正文下方的外链按钮（itch / GitHub / YouTube）
       }
     }>
+    // 详情页的通用文案（不分项目）
     detail: {
-      eyebrow: string
-      back: string
-      about: string
-      details: string
+      eyebrow: string      // 顶部小标签
+      back: string         // 返回链接文字
+      about: string        // 正文区标题
+      details: string      // 右侧信息栏标题
       links: string
     }
   }
@@ -189,7 +193,7 @@ const en: Translations = {
       questions: [
         {
           q: 'What makes Off Balance unique?',
-          a: 'A physics-based roly-poly ball mechanic creates emergent gameplay. Custom Substance Designer materials and stylized VFX push the visual identity beyond typical student projects.',
+          a: 'A small game built around a human-sized roly-poly toppling input. Custom Substance Designer materials, stylized VFX, and a procedurally generated chocolate waterfall push the visual identity beyond typical student projects.',
         },
         {
           q: 'Tell me about Offbeat Reprise',
@@ -197,7 +201,7 @@ const en: Translations = {
         },
         {
           q: "What's Living Strokes about?",
-          a: 'A VR puzzle game teaching Chinese characters through spatial interaction. Players trace strokes in 3D space, blending cultural education with immersive tech.',
+          a: 'A VR puzzle game teaching Chinese characters through spatial interaction. Players trace strokes in 3D space to cast abilities, blending cultural education with immersive tech.',
         },
       ],
       btn: 'View projects',
@@ -257,7 +261,7 @@ const en: Translations = {
         period: 'May - Aug 2026',
         institution: 'Tencent IEG - Lightspeed Studio',
         role: 'AI Agent Developer Intern',
-        detail: 'Interactive Entertainment Group · Lightspeed Studio · AI Agent pipeline development for game production workflows with PCG plugins',
+        detail: 'Interactive Entertainment Group · Lightspeed Studio · AI Agent pipeline development for procedural game production workflows with PCG plugins',
         tag: 'INDUSTRY',
       },
       {
@@ -273,7 +277,7 @@ const en: Translations = {
       tag: 'PUBLISHED · Graphical Models 2025',
       title: 'TerraCraft',
       subtitle: 'City-scale Generative Procedural Modeling with Natural Languages',
-      desc: 'A novel framework using Large Language Models to generate geometrically high-quality 3D city-scale scenes from natural text descriptions — validated through user studies and extensive experiments.',
+      desc: 'A novel framework using Large Language Models to generate geometrically high-quality 3D city-scale scenes from natural text descriptions.',
       doi: 'https://doi.org/10.1016/j.gmod.2025.101285',
       doiLabel: 'DOI: 10.1016/j.gmod.2025.101285',
       btn: 'Read paper',
@@ -304,12 +308,13 @@ const en: Translations = {
           paragraphs: [
             'Off Balance focused on building stylized visual assets for a game environment. The core of the work was a set of procedural stylized textures authored in Substance Designer — metal grates, concrete, wood, and coated metal rust — with close attention to memory optimization through texture compression.',
             'Beyond surfacing, the project extended into real-time VFX built in Niagara, including stylized smoke and fire effects, alongside ocean materials crafted to elevate the environmental presentation of the scene.',
+            'The project also includes a Houdini-based procedural pipeline for generating environment assets, including a flowmap-driven chocolate material and procedural geometry for the chocolate waterfall, lava, and lakes.',
           ],
           meta: [
             { label: 'Role', value: 'Environment / Technical Artist' },
             { label: 'Year', value: '2025' },
             { label: 'Category', value: 'Video Games' },
-            { label: 'Tools', value: 'Substance Designer, Niagara' },
+            { label: 'Tools', value: 'Substance Designer, Niagara, Houdini' },
           ],
           links: [],
         },
@@ -342,12 +347,12 @@ const en: Translations = {
         title: 'Substrate Carpaint',
         category: 'TECHNICAL ART',
         year: '2025',
-        desc: 'Layered car-paint material study — metallic flake, clearcoat, and Fresnel falloff authored procedurally and rendered in real time.',
+        desc: 'Layered car-paint material study — mean-free-path-based SSS, metallic flake, clearcoat, and thin-film interference, all authored procedurally and rendered in real time.',
         link: '',
         detail: {
-          tagline: 'A layered, physically motivated car-paint material rendered in real time.',
+          tagline: 'A physically based, real-time layered car-paint material.',
           paragraphs: [
-            'Substrate Carpaint is a material study reproducing the look of automotive paint as a layered surface: a metallic-flake base coat, a glossy clearcoat layer on top, and Fresnel-driven falloff that shifts the highlight and tint across viewing angles.',
+            'Substrate Carpaint is a material study reproducing automotive paint as a layered surface: a metallic-flake base coat, a glossy clearcoat layer on top, wavelength-dependent thin-film interference, and a highlight and tint that shift across viewing angles.',
             'The shader is authored procedurally so its flake density, coat roughness, and color can be tuned freely, and it is built to render in real time — captured here as the rotating turntable on this page.',
           ],
           meta: [
@@ -513,7 +518,7 @@ const zh: Translations = {
       questions: [
         {
           q: 'Off Balance 有什么独特之处？',
-          a: '基于物理的不倒翁球力学创造涌现式玩法。定制的 Substance Designer 材质和风格化特效让视觉表现超越一般学生项目。',
+          a: '基于人型大小不倒翁输入的小游戏。定制的 Substance Designer 材质和风格化特效以及程序化生成巧克力瀑布让视觉表现超越一般学生项目。',
         },
         {
           q: 'Offbeat Reprise 是什么？',
@@ -521,13 +526,13 @@ const zh: Translations = {
         },
         {
           q: 'Living Strokes 是关于什么的？',
-          a: '一款通过空间交互教授中文汉字的 VR 益智游戏。玩家在三维空间中描绘笔画，将文化教育与沉浸技术融为一体。',
+          a: '一款通过空间交互教授中文汉字的 VR 益智游戏。玩家在三维空间中描绘笔画以释放技能，将文化教育与沉浸技术融为一体。',
         },
       ],
       btn: '查看项目',
       link: '查看全部',
       title: '游戏开发',
-      desc: '在游戏创作节、学术项目和个人实验中完成多款游戏作品。',
+      desc: '在游戏黑客松、学术项目和个人实验中完成多款游戏作品。',
     },
     card2: {
       tag: '已发表',
@@ -574,14 +579,14 @@ const zh: Translations = {
         period: '2024 年 7—9 月',
         institution: '犹他大学',
         role: '科研实习生',
-        detail: '导师：杨忻  ·  FlameGS：基于高斯散点与 FLAME 模型的照片级真实人脸重建',
+        detail: '导师：杨垠  ·  FlameGS：基于高斯泼溅 与 FLAME 模型的照片级真实人脸重建',
         tag: '研究',
       },
       {
         period: '2025 年',
         institution: '腾讯 IEG · 光子工作室',
         role: '技术实习生 — AI Agent 开发',
-        detail: '互动娱乐事业群 · 光子工作室 · 面向游戏制作工作流的 AI Agent 流程开发',
+        detail: '互动娱乐事业群 · 光子工作室 · 面向游戏程序化制作工作流的 AI Agent 流程开发',
         tag: '行业',
       },
       {
@@ -597,7 +602,7 @@ const zh: Translations = {
       tag: '已发表 · Graphical Models 2025',
       title: 'TerraCraft',
       subtitle: '基于自然语言的城市规模生成式程序化建模',
-      desc: '一种利用大语言模型从自然语言描述生成几何高质量城市级三维场景的新框架——通过用户研究和大量实验验证其有效性。',
+      desc: '一种利用大语言模型从自然语言描述生成几何高质量城市级三维场景的新框架。',
       doi: 'https://doi.org/10.1016/j.gmod.2025.101285',
       doiLabel: 'DOI: 10.1016/j.gmod.2025.101285',
       btn: '阅读论文',
@@ -628,12 +633,13 @@ const zh: Translations = {
           paragraphs: [
             'Off Balance 聚焦于为游戏环境制作风格化的视觉资产。核心工作是一组在 Substance Designer 中制作的程序化风格化材质——金属格栅、混凝土、木材以及带涂层的金属锈蚀——并通过纹理压缩对内存占用进行了细致优化。',
             '在表面材质之外，项目还延伸到在 Niagara 中制作的实时特效，包括风格化的烟雾与火焰，以及为提升场景环境表现而制作的海洋材质。',
+            '项目还包含一个基于 Houdini 的程序化流水线，用于生成环境资产，包括基于Flowmap的巧克力材质、巧克力瀑布岩浆湖泊几何生成',
           ],
           meta: [
             { label: '角色', value: '环境 / 技术美术' },
             { label: '年份', value: '2025' },
             { label: '类别', value: '电子游戏' },
-            { label: '工具', value: 'Substance Designer、Niagara' },
+            { label: '工具', value: 'Substance Designer、Niagara、Houdini' },
           ],
           links: [],
         },
@@ -666,12 +672,12 @@ const zh: Translations = {
         title: 'Substrate Carpaint',
         category: '技术美术',
         year: '2025',
-        desc: '分层汽车漆材质研究——金属闪片、清漆层与菲涅尔衰减全程序化制作，实时渲染呈现。',
+        desc: '分层汽车漆材质研究——基于平均自由程的SSS、金属闪片、清漆层与薄膜干涉材质全程序化制作，实时渲染呈现。',
         link: '',
         detail: {
-          tagline: '一套基于物理直觉、实时渲染的分层汽车漆材质。',
+          tagline: '一套基于物理、实时渲染的分层汽车漆材质。',
           paragraphs: [
-            'Substrate Carpaint 是一项材质研究，将汽车漆还原为分层的表面：带金属闪片的底色层、其上的高光清漆层，以及由菲涅尔驱动、随视角变化的高光与色调衰减。',
+            'Substrate Carpaint 是一项材质研究，将汽车漆还原为分层的表面：带金属闪片的底色层、其上的高光清漆层、基于波长的薄膜干涉，以及随视角变化的高光与色调衰减。',
             '着色器以程序化方式制作，闪片密度、清漆粗糙度与颜色都可自由调节，并面向实时渲染——本页中以旋转转盘的形式呈现。',
           ],
           meta: [
